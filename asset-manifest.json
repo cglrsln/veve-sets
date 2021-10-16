@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/veve-sets/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/veve-sets/static/js/main.ce1ed949.chunk.js",
+    "main.js.map": "/veve-sets/static/js/main.ce1ed949.chunk.js.map",
+    "runtime-main.js": "/veve-sets/static/js/runtime-main.0b2820c7.js",
+    "runtime-main.js.map": "/veve-sets/static/js/runtime-main.0b2820c7.js.map",
+    "static/js/2.a5e10e42.chunk.js": "/veve-sets/static/js/2.a5e10e42.chunk.js",
+    "static/js/2.a5e10e42.chunk.js.map": "/veve-sets/static/js/2.a5e10e42.chunk.js.map",
+    "static/js/3.3c0ea321.chunk.js": "/veve-sets/static/js/3.3c0ea321.chunk.js",
+    "static/js/3.3c0ea321.chunk.js.map": "/veve-sets/static/js/3.3c0ea321.chunk.js.map",
+    "index.html": "/veve-sets/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/veve-sets/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.a5e10e42.chunk.js.LICENSE.txt": "/veve-sets/static/js/2.a5e10e42.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/veve-sets/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0b2820c7.js",
+    "static/js/2.a5e10e42.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.ce1ed949.chunk.js"
+  ]
+}
