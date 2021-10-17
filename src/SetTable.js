@@ -12,7 +12,11 @@ function SetTable() {
     axios.get(path)
       .then(response => {
         const filteredSets = response.data.filter(item => item.collectibles)
-        setSets(filteredSets)
+        const convertedSets = filteredSets.map(item => {
+          item.date = new Date(item.date)
+          return item
+        })
+        setSets(convertedSets)
       })
       .catch(error => {
         console.log(error)
@@ -31,15 +35,36 @@ function SetTable() {
     const formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
                             .format(item.total);
 
+    const formattedDate = item.date.toLocaleString('en-US', {
+      year: 'numeric', month: 'short', day: 'numeric' })
+
     return(
       <tr key={index}>
         <td>{item.season}</td>
+        <td>{formattedDate}</td>
         <td>{item.name}</td>
         <td>{item.collectibles.length}</td>
         <td>{formattedTotal}</td>
       </tr>
     )
   })
+
+
+  function sortDropDate() {
+    let order = (sortOrder === 'drop_date_asc') ? 'drop_date_desc' : 'drop_date_asc'
+    let sortedSet = [...sets]
+
+    console.log(sets)
+    if (order === 'drop_date_asc') {
+      sortedSet = sortedSet.sort((a, b) => a.date.getTime() - b.date.getTime())
+    }
+    else if (order === 'drop_date_desc') {
+      sortedSet = sortedSet.sort((a, b) => b.date.getTime() - a.date.getTime())
+    }
+
+    setSortOrder(order)
+    setSets(sortedSet)
+  }
 
   function sortName() {
     let order = (sortOrder === 'name_asc') ? 'name_desc' : 'name_asc'
@@ -76,6 +101,7 @@ function SetTable() {
       <thead>
         <tr>
           <th>Season</th>
+          <th onClick={sortDropDate}>Drop Date</th>
           <th onClick={sortName}>Set</th>
           <th># of Collectibles</th>
           <th onClick={sortPrice}>Price</th>

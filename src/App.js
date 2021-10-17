@@ -16,6 +16,7 @@ function App() {
         </Container>
       </Navbar>
       <SetTable/>
+      <p>Data provided by <a href="https://ecomiwiki.com/marketplace/floors">ECOMI WIKI</a></p>
     </Container>
   )
 }
