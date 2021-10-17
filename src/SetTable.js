@@ -11,7 +11,8 @@ function SetTable() {
     let path = `https://cmar.github.io/veve-price-scraper/current.json`
     axios.get(path)
       .then(response => {
-        setSets(response.data)
+        const filteredSets = response.data.filter(item => item.collectibles)
+        setSets(filteredSets)
       })
       .catch(error => {
         console.log(error)
