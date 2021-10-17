@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState, useEffect} from 'react';
 
 import Container from 'react-bootstrap/Container';
+import Table from 'react-bootstrap/Table';
 
 function App() {
   const [sets, setSets] = useState([])
@@ -19,6 +20,9 @@ function App() {
       })
   })
 
+
+  sets.sort((a, b) => b.total - a.total)
+
   const rows = sets.map((item, index) => {
     return(
       <tr key={index}>
@@ -32,11 +36,19 @@ function App() {
 
   return (
     <Container className="p-3">
-      <table>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Set</th>
+            <th>Season</th>
+            <th># of Collectibles</th>
+            <th>Price</th>
+          </tr>
+        </thead>
         <tbody>
           {rows}
         </tbody>
-      </table>
+      </Table>
     </Container>
   )
 }
