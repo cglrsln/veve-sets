@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useState, useEffect} from 'react';
 import Table from 'react-bootstrap/Table';
 
-
 function SetTable() {
  const [sets, setSets] = useState([])
 
@@ -17,8 +16,6 @@ function SetTable() {
       })
   })
 
- //sets.sort((a, b) => b.total - a.total)
-
   sets.sort((a, b) => {
     if (a.season < b.season) { return -1 }
     if (a.season > b.season) { return 1 }
@@ -28,12 +25,15 @@ function SetTable() {
   })
 
   const rows = sets.map((item, index) => {
+    const formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+                            .format(item.total);
+
     return(
       <tr key={index}>
         <td>{item.name}</td>
         <td>{item.season}</td>
         <td>{item.collectibles.length}</td>
-        <td>${item.total.toFixed(2)}</td>
+        <td>{formattedTotal}</td>
       </tr>
     )
   })
