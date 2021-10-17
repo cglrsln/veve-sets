@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/veve-sets/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/veve-sets/static/js/main.3bd4a17d.chunk.js",
-    "main.js.map": "/veve-sets/static/js/main.3bd4a17d.chunk.js.map",
+    "main.js": "/veve-sets/static/js/main.da58d3dd.chunk.js",
+    "main.js.map": "/veve-sets/static/js/main.da58d3dd.chunk.js.map",
     "runtime-main.js": "/veve-sets/static/js/runtime-main.b46125fc.js",
     "runtime-main.js.map": "/veve-sets/static/js/runtime-main.b46125fc.js.map",
     "static/css/2.4659568d.chunk.css": "/veve-sets/static/css/2.4659568d.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.4659568d.chunk.css",
     "static/js/2.6d94fa66.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.3bd4a17d.chunk.js"
+    "static/js/main.da58d3dd.chunk.js"
   ]
 }
