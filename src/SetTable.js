@@ -36,7 +36,7 @@ function SetTable() {
                             .format(item.total);
 
     const formattedDate = item.date.toLocaleString('en-US', {
-      year: 'numeric', month: 'short', day: 'numeric' })
+      year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })
 
     return(
       <tr key={index}>
