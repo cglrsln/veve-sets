@@ -3,6 +3,8 @@ import './App.css';
 import axios from 'axios';
 import { useState, useEffect} from 'react';
 
+import Container from 'react-bootstrap/Container';
+
 function App() {
   const [sets, setSets] = useState([])
 
@@ -29,13 +31,13 @@ function App() {
   })
 
   return (
-    <div className="App">
+    <Container className="p-3">
       <table>
         <tbody>
-        {rows}
+          {rows}
         </tbody>
       </table>
-    </div>
+    </Container>
   )
 }
 
