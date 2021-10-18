@@ -10,10 +10,10 @@ import Navbar from 'react-bootstrap/Navbar';
 function App() {
   return (
     <Container>
-      <Navbar bg="light" className="mb-3">
-        <Container style={{ 'background-color': '#3898EC' }}>
+      <Navbar className="navbar-dark bg-primary mb-3">
+        <Container>
           <Navbar.Brand href="#home">
-            <h3 style={{ 'color': 'white' }}>VeVe Setlist</h3>
+            <h3>VeVe Setlist</h3>
           </Navbar.Brand>
         </Container>
       </Navbar>
