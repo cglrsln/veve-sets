@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/veve-sets/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/veve-sets/static/js/main.da58d3dd.chunk.js",
-    "main.js.map": "/veve-sets/static/js/main.da58d3dd.chunk.js.map",
+    "main.js": "/veve-sets/static/js/main.5542dcab.chunk.js",
+    "main.js.map": "/veve-sets/static/js/main.5542dcab.chunk.js.map",
     "runtime-main.js": "/veve-sets/static/js/runtime-main.b46125fc.js",
     "runtime-main.js.map": "/veve-sets/static/js/runtime-main.b46125fc.js.map",
     "static/css/2.4659568d.chunk.css": "/veve-sets/static/css/2.4659568d.chunk.css",
-    "static/js/2.6d94fa66.chunk.js": "/veve-sets/static/js/2.6d94fa66.chunk.js",
-    "static/js/2.6d94fa66.chunk.js.map": "/veve-sets/static/js/2.6d94fa66.chunk.js.map",
+    "static/js/2.49d5e499.chunk.js": "/veve-sets/static/js/2.49d5e499.chunk.js",
+    "static/js/2.49d5e499.chunk.js.map": "/veve-sets/static/js/2.49d5e499.chunk.js.map",
     "static/js/3.36257a95.chunk.js": "/veve-sets/static/js/3.36257a95.chunk.js",
     "static/js/3.36257a95.chunk.js.map": "/veve-sets/static/js/3.36257a95.chunk.js.map",
     "index.html": "/veve-sets/index.html",
     "static/css/2.4659568d.chunk.css.map": "/veve-sets/static/css/2.4659568d.chunk.css.map",
     "static/css/main.8c8b27cf.chunk.css.map": "/veve-sets/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.6d94fa66.chunk.js.LICENSE.txt": "/veve-sets/static/js/2.6d94fa66.chunk.js.LICENSE.txt"
+    "static/js/2.49d5e499.chunk.js.LICENSE.txt": "/veve-sets/static/js/2.49d5e499.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b46125fc.js",
     "static/css/2.4659568d.chunk.css",
-    "static/js/2.6d94fa66.chunk.js",
+    "static/js/2.49d5e499.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.da58d3dd.chunk.js"
+    "static/js/main.5542dcab.chunk.js"
   ]
 }
