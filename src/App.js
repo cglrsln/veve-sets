@@ -11,8 +11,10 @@ function App() {
   return (
     <Container>
       <Navbar bg="light" className="mb-3">
-        <Container>
-          <Navbar.Brand href="#home">VeVe Sets</Navbar.Brand>
+        <Container style={{ 'background-color': '#3898EC' }}>
+          <Navbar.Brand href="#home">
+            <h3 style={{ 'color': 'white' }}>VeVe Setlist</h3>
+          </Navbar.Brand>
         </Container>
       </Navbar>
       <SetTable/>
