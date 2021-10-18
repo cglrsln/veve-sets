@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { useState, useEffect} from 'react';
 import Table from 'react-bootstrap/Table';
+import SortIcon from './SortIcon';
 
 function SetTable() {
   const [sets, setSets] = useState([])
-  const [sortOrder, setSortOrder] = useState('')
+  const [sortConfig, setSortConfig] = useState({
+    field: 'total',
+    direction: 'ascending'
+  })
 
   useEffect(() => {
     console.log("fetching data")
@@ -18,6 +22,7 @@ function SetTable() {
           return item
         })
         const sortedSet = convertedSets.sort((a, b) => a.total - b.total)
+        setSortConfig({ key: 'total', direction: 'ascending' });
         setSets(convertedSets)
       })
       .catch(error => {
@@ -25,13 +30,43 @@ function SetTable() {
       })
   }, [])
 
-  // sets.sort((a, b) => {
-  //   if (a.season < b.season) { return -1 }
-  //   if (a.season > b.season) { return 1 }
-  //   if (a.name < b.name) { return -1 }
-  //   if (a.name > b.name) { return 1 }
-  //   return b.total - a.total
-  // })
+
+  function compareNumberFn(key, direction) {
+    if (direction === 'ascending') {
+      return (a, b) => a[key] - b[key]
+    } else {
+      return (a, b) => b[key] - a[key]
+    }
+  }
+
+  function compareStringFn(key, direction) {
+    if (direction === 'ascending') {
+      return (a, b) => a[key].localeCompare(b[key])
+    } else {
+      return (a, b) => b[key].localeCompare(a[key])
+    }
+  }
+
+  function compareDateFn(key, direction) {
+    if (direction === 'ascending') {
+      return (a, b) => a[key].getTime() - b[key].getTime()
+    } else {
+      return (a, b) => b[key].getTime() - a[key].getTime()
+    }
+  }
+
+  function sortField(key, compareFn = compareNumberFn) {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+
+    let sortedSet = [...sets]
+    sortedSet.sort(compareFn(key, direction))
+
+    setSortConfig({ key, direction });
+    setSets(sortedSet)
+  }
 
   const rows = sets.map((item, index) => {
     const formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
@@ -51,90 +86,15 @@ function SetTable() {
     )
   })
 
-  function sortDropDate() {
-    let order = (sortOrder === 'drop_date_asc') ? 'drop_date_desc' : 'drop_date_asc'
-    let sortedSet = [...sets]
-
-    if (order === 'drop_date_asc') {
-      sortedSet = sortedSet.sort((a, b) => a.date.getTime() - b.date.getTime())
-    }
-    else if (order === 'drop_date_desc') {
-      sortedSet = sortedSet.sort((a, b) => b.date.getTime() - a.date.getTime())
-    }
-
-    setSortOrder(order)
-    setSets(sortedSet)
-  }
-
-  function sortName() {
-    let order = (sortOrder === 'name_asc') ? 'name_desc' : 'name_asc'
-    let sortedSet = [...sets]
-
-    if (order === 'name_asc') {
-      sortedSet = sortedSet.sort((a, b) => a.name.localeCompare(b.name))
-    }
-    else if (order === 'name_desc') {
-      sortedSet = sortedSet.sort((a, b) => b.name.localeCompare(a.name))
-    }
-
-    setSortOrder(order)
-    setSets(sortedSet)
-  }
-
-  function sortCollectibles() {
-    let order = (sortOrder === 'collectibles_asc') ? 'collectibles_desc' : 'collectibles_asc'
-    let sortedSet = [...sets]
-
-    if (order === 'collectibles_asc') {
-      sortedSet = sortedSet.sort((a, b) => a.collectiblesCount - b.collectiblesCount)
-    }
-    else if (order === 'collectibles_desc') {
-      sortedSet = sortedSet.sort( (a, b) => b.collectiblesCount - a.collectiblesCount)
-    }
-
-    setSortOrder(order)
-    setSets(sortedSet)
-  }
-
-  function sortPrice() {
-    let order = (sortOrder === 'price_asc') ? 'price_desc' : 'price_asc'
-    let sortedSet = [...sets]
-
-    if (order === 'price_asc') {
-      sortedSet = sortedSet.sort((a, b) => a.total - b.total)
-    }
-    else if (order === 'price_desc') {
-      sortedSet = sortedSet.sort( (a, b) => b.total - a.total)
-    }
-
-    setSortOrder(order)
-    setSets(sortedSet)
-  }
-
-  function sortSeason() {
-    let order = (sortOrder === 'season_asc') ? 'season_desc' : 'season_asc'
-    let sortedSet = [...sets]
-
-    if (order === 'season_asc') {
-      sortedSet = sortedSet.sort((a, b) => a.season - b.season)
-    }
-    else if (order === 'season_desc') {
-      sortedSet = sortedSet.sort( (a, b) => b.season - a.season)
-    }
-
-    setSortOrder(order)
-    setSets(sortedSet)
-  }
-
   return(
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th onClick={sortSeason}>Season</th>
-          <th onClick={sortDropDate}>Drop Date</th>
-          <th onClick={sortName}>Set</th>
-          <th onClick={sortCollectibles}># of Collectibles</th>
-          <th onClick={sortPrice}>Price</th>
+          <th onClick={(e) => sortField('season')}>Season<SortIcon sortConfig={sortConfig} field='season'/></th>
+          <th onClick={(e) => sortField('date', compareDateFn)}>Drop Date<SortIcon sortConfig={sortConfig} field='date'/></th>
+          <th onClick={(e) => sortField('name', compareStringFn)}>Set<SortIcon sortConfig={sortConfig} field='name'/></th>
+          <th onClick={(e) => sortField('collectiblesCount')}># of Collectibles<SortIcon sortConfig={sortConfig} field='collectiblesCount' /></th>
+          <th onClick={(e) => sortField('total')}>Price<SortIcon sortConfig={sortConfig} field='total'/></th>
         </tr>
       </thead>
       <tbody>
